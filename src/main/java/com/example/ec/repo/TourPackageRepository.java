@@ -1,15 +1,11 @@
 package com.example.ec.repo;
 
-import com.example.ec.domain.Difficulty;
-import com.example.ec.domain.Region;
-import com.example.ec.domain.Tour;
 import com.example.ec.domain.TourPackage;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -26,7 +22,7 @@ public interface TourPackageRepository extends CrudRepository<TourPackage, Strin
      * @param name name of the package
      * @return Optional of TourPackage
      */
-    Optional<TourPackage> findByName(String name);
+    Optional<TourPackage> findByName(@Param("name")String name);
 
     @Override
     @RestResource(exported = false)
@@ -52,3 +48,4 @@ public interface TourPackageRepository extends CrudRepository<TourPackage, Strin
     @RestResource(exported = false)
     void deleteAll();
 }
+
